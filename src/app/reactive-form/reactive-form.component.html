@@ -1,0 +1,31 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name</label>
+        <input id="name" formControlName="name">
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input id="email" formControlName="email">
+    </div>
+    <div formArrayName="emails">
+        <div *ngFor="let email of emails.controls; let i=index">
+            <label for="email{{i}}">Email {{i + 1}}</label>
+            <input [id]="'email' + i" [formControlName]="i">
+            <!-- add email button -->
+            <button type="button" (click)="addEmail()">Add Email</button>
+            <!-- remove email button -->
+            <button type="button" (click)="removeEmail(i)">Remove Email</button>
+        </div>
+    </div>
+    <div>
+        <label for="selectedOption">Select Option</label>
+        <select id="selectedOption" formControlName="selectedOption">
+            <option *ngFor="let option of options" [value]="option">{{option}}</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit" [disabled]="myForm.invalid">Submit</button>
+        <button type="button" (click)="setFormValue()">Set Form Value</button>
+        <button type="button" (click)="patchFormValue()">Patch Form Value</button>
+    </div>
+</form>

@@ -1,0 +1,10 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to Angular Lifecycle Hooks Example!
+  </h1>
+  <button (click)="toggle()">Toggle Lifecycle Component</button>
+  <button (click)="changeData()">Change Input Data</button>
+  <app-lifecycle *ngIf="showComponent" [data]="inputData">
+    <p>Projected content</p>
+  </app-lifecycle>
+</div>

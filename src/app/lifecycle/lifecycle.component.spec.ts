@@ -6,12 +6,10 @@ describe('LifecycleComponent', () => {
   let component: LifecycleComponent;
   let fixture: ComponentFixture<LifecycleComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [LifecycleComponent]
-    })
-    .compileComponents();
-
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [LifecycleComponent]
+    });
     fixture = TestBed.createComponent(LifecycleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

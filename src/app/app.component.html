@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div class="container">
   <h1>
     Welcome to Angular Lifecycle Hooks Example!
   </h1>
@@ -7,4 +7,7 @@
   <app-lifecycle *ngIf="showComponent" [data]="inputData">
     <p>Projected content</p>
   </app-lifecycle>
+  <div *ngIf="!showComponent">
+    <p>Component is not visible</p>
+  </div>
 </div>

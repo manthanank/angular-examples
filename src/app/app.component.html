@@ -1,0 +1,26 @@
+<div [appNgClass]="{'active': isActive, 'disabled': isDisabled}">
+  This div will have classes applied conditionally.
+</div>
+
+<div [appNgStyle]="{'color': textColor, 'font-size': fontSize}">
+  This div will have styles applied conditionally.
+</div>
+
+<input type="text" [appNgModel]="name" (appNgModelChange)="name = $event">
+<p>Your name is: {{ name }}</p>
+
+<div *appNgIf="isVisible">
+  This content is conditionally visible.
+</div>
+
+<ul>
+  <li *appNgFor="let item of items; let i = index">
+    {{ i }}: {{ item }}
+  </li>
+</ul>
+
+<div [appNgSwitch]="value">
+  <div *appNgSwitchCase="'case1'">Case 1</div>
+  <div *appNgSwitchCase="'case2'">Case 2</div>
+  <div *appNgSwitchDefault>Default case</div>
+</div>

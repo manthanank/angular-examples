@@ -1,0 +1,14 @@
+<h1>Custom Pipes Example</h1>
+
+<p>Custom Date Pipe: {{ someDate | customDate:'fullDate' }}</p>
+<p>Custom Uppercase Pipe: {{ 'hello world' | customUppercase }}</p>
+<p>Custom Lowercase Pipe: {{ 'HELLO WORLD' | customLowercase }}</p>
+<p>Custom Currency Pipe: {{ 1234.56 | customCurrency:'EUR':'symbol' }}</p>
+<p>Custom Percent Pipe: {{ 0.85 | customPercent }}</p>
+<p>Custom Slice Pipe:</p>
+<ul>
+  <li *ngFor="let item of items | customSlice:1:3">{{ item }}</li>
+</ul>
+<p>Custom Number Pipe: {{ 1234.567 | customNumber }}</p>
+Custom JSON Pipe: <pre>{{ someObject | customJson }}</pre>
+<p>Custom Async Pipe: {{ someObservable | customAsync }}</p>

@@ -1,0 +1,10 @@
+<h1>Caching Example</h1>
+<div class="button-container">
+    <button routerLink="posts-without-caching" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+        Without Caching
+    </button>
+    <button routerLink="posts-with-caching" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+        With Caching
+    </button>
+</div>
+<router-outlet></router-outlet>

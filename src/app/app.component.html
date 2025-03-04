@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="input-container">
+    <label for="postIdInput" class="input-label">Post ID:</label>
+    <input type="number" id="postIdInput" [value]="postId()" (input)="updatePostId($event)" class="post-id-input" />
+  </div>
+
+  @if (comments.isLoading()) {
+  <p class="loading-message">Loading comments...</p>
+  } @else if (comments.error()) {
+  <p class="error-message">Error: {{ comments.error() }}</p>
+  } @else if (comments.hasValue()) {
+  <p class="total-comments">Total Comments: {{ comments.value().length }}</p>
+  <ul class="comment-list">
+    @for (comment of comments.value(); track comment.id) {
+    <li class="comment-item">
+      <strong class="comment-name">{{ comment.name }}</strong> (<span class="comment-email">{{ comment.email
+        }}</span>):<br />
+      <span class="comment-body">{{ comment.body }}</span>
+    </li>
+    }
+  </ul>
+  <button (click)="comments.reload()" class="refresh-button">Refresh</button>
+  }
+
+  <div class="navigation-container">
+    <button (click)="previousPost()" [disabled]="postId() <= 1" class="nav-button">Previous Post</button>
+    <button (click)="nextPost()" class="nav-button">Next Post</button>
+    <p class="current-post">Current Post ID: {{ postId() }}</p>
+  </div>
+
+  <div class="first-email-container">
+    <p class="first-email">First comment email: {{ firstCommentEmail() }}</p>
+  </div>
+</div>

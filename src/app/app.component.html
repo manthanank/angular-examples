@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Item List Example</h2>
+  <p>Items: {{ items() | json }}</p>
+  <p>Selected Item: {{ selectedItem() }}</p>
+  <p>Item Count: {{ itemCount() }}</p>
+
+  <div class="button-group">
+    <button (click)="addItem()">Add Item</button>
+    <button (click)="selectItem('Item 2')">Select Item 2</button>
+    <button (click)="resetItems()">Reset Items</button>
+    <button (click)="removeItem()">Remove Selected Item</button>
+  </div>
+
+  <div class="item-list">
+    <h3>Current Items:</h3>
+    <ul>
+      @for (item of items(); track $index) {
+      <li>
+        {{ item }}
+        <button class="select-button" (click)="selectItem(item)">Select</button>
+      </li>
+      }
+    </ul>
+  </div>
+</div>

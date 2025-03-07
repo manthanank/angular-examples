@@ -1,0 +1,9 @@
+<div class="container">
+  <p class="message">{{ message() }}</p>
+  <div class="input-row">
+    <input type="text" [value]="inputValue()" (input)="updateInputValue($event)" placeholder="Enter text"
+      class="input-field">
+    <button class="update-button" (click)="updateMessage()" [disabled]="!isValidInput()">Update</button>
+  </div>
+  <p class="input-value">Input Value: {{ inputValue() }}</p>
+</div>

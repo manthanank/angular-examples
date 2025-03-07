@@ -1,0 +1,48 @@
+.container {
+  font-family: sans-serif;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 400px;
+  margin: 20px auto;
+}
+.message {
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Use gap for spacing in flexbox */
+}
+.input-field {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 70%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 1em;
+}
+.update-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.update-button:hover {
+  background-color: #0056b3;
+}
+.update-button:disabled {
+  background-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+.input-value {
+  font-weight: 600;
+  color: #555;
+  margin-top: 10px;
+}

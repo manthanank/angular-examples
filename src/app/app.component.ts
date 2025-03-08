@@ -9,14 +9,33 @@ import { afterRenderEffect, Component, signal } from '@angular/core';
 export class AppComponent {
   message = signal('Initial Message');
   inputValue = signal('');
+  counter = signal(0);
+  showCounter = signal(true);
 
   constructor() {
-    afterRenderEffect(() => {
-      console.log('Message updated in DOM:', this.message());
+    afterRenderEffect({
+      earlyRead: (onCleanup) => {
+        console.log('Message updated in DOM:', this.message());
+        onCleanup(() => {
+          console.log('Cleanup for message effect');
+        });
+      },
+      write: () => {
+        if (this.inputValue() !== '') {
+          console.log('Input value updated:', this.inputValue());
+        }
+        console.log('Counter updated:', this.counter());
+      },
+      mixedReadWrite: () => console.log('Mixed read/write effect'),
+      read: () => console.log('Read effect'),
     });
 
     afterRenderEffect(() => {
-      console.log('Input value updated:', this.inputValue());
+      if (this.showCounter()) {
+        console.log('Counter visibility: Visible');
+      } else {
+        console.log('Counter visibility: Hidden');
+      }
     });
   }
 
@@ -25,10 +44,20 @@ export class AppComponent {
   }
 
   updateMessage() {
-    this.message.set(this.inputValue());
+    if (this.isValidInput()) {
+      this.message.set(this.inputValue());
+      this.counter.update((value) => value + 1);
+    }
   }
 
-  updateInputValue(event: any) {
-    this.inputValue.set(event.target.value);
+  updateInputValue(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (target) {
+      this.inputValue.set(target.value);
+    }
+  }
+
+  toggleCounterVisibility() {
+    this.showCounter.update((value) => !value);
   }
 }

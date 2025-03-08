@@ -1,0 +1,6 @@
+<h1>Dynamic HTTP Interceptor Test</h1>
+<label>URL: <input type="text" [(ngModel)]="apiUrl" /></label><br />
+<button (click)="fetchData()">Fetch Data</button>
+@if(response){
+<p>{{ response | json }}</p>
+}

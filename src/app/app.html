@@ -1,0 +1,28 @@
+<h2 class="title">Binary Assignment Operators Demo 🧮</h2>
+
+<div class="controls">
+  <button (click)="count += 1">Increment (+1)</button>
+  <button (click)="count -= 1">Decrement (-1)</button>
+  <button (click)="count *= multiplier">Multiply by {{ multiplier }}</button>
+  <button (click)="count **= 2">Square</button>
+</div>
+
+<p class="output">🔢 Current Count: <strong>{{ count }}</strong></p>
+
+<hr>
+
+<div class="controls">
+  <button (click)="message ||= 'Hello, Angular!'">Set Message if Empty</button>
+  <button (click)="message &&= ''">Clear Message if Exists</button>
+</div>
+
+<p class="output">💬 Message: <strong>{{ message || 'N/A' }}</strong></p>
+
+<hr>
+
+<div class="controls">
+  <button (click)="condition ??= true">Set Condition if Undefined / Null</button>
+  <button (click)="condition &&= false">Reset Condition if True</button>
+</div>
+
+<p class="output">✅ Condition: <strong>{{ condition }}</strong></p>
